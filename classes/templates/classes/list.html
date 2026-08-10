@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Classes{% endblock %}
+
+{% block content %}
+    <h1>Classes</h1>
+
+    <div class="row">
+        {% for single_class in classes %}
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ single_class.name }}</h5>
+                    <p class="card-text">{{ single_class.description }}</p>
+                    <a href="{% url 'classes:detail' single_class.id %}"
+                       class="btn btn-success btn-sm">View class</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No classes yet. Run <code>python seed_data.py</code> to add some.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

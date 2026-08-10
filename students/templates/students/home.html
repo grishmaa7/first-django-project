@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - My School{% endblock %}
+
+{% block content %}
+    <h1>Welcome to My School</h1>
+    <p class="lead">A simple Django project built step by step, up to Class 4.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Students</h5>
+                    <p class="card-text">See everyone enrolled at the school.</p>
+                    <a href="{% url 'students:list' %}" class="btn btn-success">View Students</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Classes</h5>
+                    <p class="card-text">Browse the classes we offer.</p>
+                    <a href="{% url 'classes:list' %}" class="btn btn-success">View Classes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Teachers</h5>
+                    <p class="card-text">Meet the teachers.</p>
+                    <a href="{% url 'teacher:list' %}" class="btn btn-success">View Teachers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

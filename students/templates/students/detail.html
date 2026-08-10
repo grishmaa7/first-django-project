@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ student.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ student.name }}</h1>
+
+    <ul class="list-group mb-3">
+        <li class="list-group-item"><strong>Email:</strong> {{ student.email }}</li>
+        <li class="list-group-item"><strong>Age:</strong> {{ student.age }}</li>
+        <li class="list-group-item"><strong>Class:</strong> {{ student.class_name.name }}</li>
+        <li class="list-group-item"><strong>Enrolled on:</strong> {{ student.enrollment_date }}</li>
+    </ul>
+
+    <a href="{% url 'students:list' %}" class="btn btn-secondary">Back to students</a>
+{% endblock %}

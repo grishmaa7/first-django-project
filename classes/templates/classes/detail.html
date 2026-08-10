@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ single_class.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ single_class.name }}</h1>
+    <p>{{ single_class.description }}</p>
+    <p><strong>Runs from</strong> {{ single_class.start_date }} <strong>to</strong> {{ single_class.end_date }}</p>
+
+    <h3 class="mt-4">Students in this class</h3>
+    <ul class="list-group">
+        {% for student in single_class.students.all %}
+        <li class="list-group-item">
+            <a href="{% url 'students:detail' student.id %}">{{ student.name }}</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No students in this class yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'classes:list' %}" class="btn btn-secondary mt-3">Back to classes</a>
+{% endblock %}

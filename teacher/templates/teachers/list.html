@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Teachers{% endblock %}
+
+{% block content %}
+    <h1>Teachers</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+            <tr>
+                <td>{{ teacher.name }}</td>
+                <td>{{ teacher.subject }}</td>
+                <td>
+                    <a href="{% url 'teacher:detail' teacher.id %}"
+                       class="btn btn-sm btn-outline-success">View</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No teachers yet. Run <code>python seed_data.py</code> to add some.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

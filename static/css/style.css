@@ -1,0 +1,18 @@
+/* A few small custom styles on top of Bootstrap */
+
+body {
+    background-color: #f7faf9;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    color: #0c4b33;
+}
+
+.card-title {
+    color: #0c4b33;
+}
