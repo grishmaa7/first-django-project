@@ -22,6 +22,13 @@ class ClassSerializer(serializers.ModelSerializer):
                 "Start date must be before end date."
             )
         return data  #always return it
+    name = serializers.CharField(
+        required=True, min_length=2,
+        error_messages={
+            "required": "Name is required.",
+            "min_length": "Name must be at least 2 characters long.",
+        },
+    )
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -61,7 +68,16 @@ class StudentSerializer(serializers.ModelSerializer):
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
+        
         fields = ["id", "name", "subject", "email", "hire_date"]
 
         # The server controls this -- clients can't set it.
         read_only_fields = ["id"]
+
+    name = serializers.CharField(
+        required=True, min_length=2,
+        error_messages={
+            "required": "Name is required.",
+            "min_length": "Name must be at least 2 characters long.",
+        },
+    )

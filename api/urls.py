@@ -1,17 +1,16 @@
-from django.urls import path
-from . import views
+from rest_framework.routers import DefaultRouter
 
-app_name = "api"
+from api.views import (
+    StudentViewSet,
+    TeacherViewSet,
+    ClassViewSet,
+)
 
-urlpatterns = [
-    path("hello/", views.HelloAPI.as_view(), name="hello"),
+router = DefaultRouter()
 
-    path("students/", views.StudentListAPI.as_view(), name="student-list"),
-    path("students/<int:id>/", views.StudentDetailAPI.as_view(), name="student-detail"),
+router.register("students", StudentViewSet, basename="student")
+router.register("teachers", TeacherViewSet, basename="teacher")
+router.register("classes", ClassViewSet, basename="class")
 
-    path("classes/", views.ClassListAPI.as_view(), name="class-list"),
-    path("classes/<int:id>/", views.ClassDetailAPI.as_view(), name="class-detail"),
 
-    path("teachers/", views.TeacherListAPI.as_view(), name="teacher-list"),
-    path("teachers/<int:id>/", views.TeacherDetailAPI.as_view(), name="teacher-detail"),
-]
+urlpatterns = router.urls
